@@ -1,4 +1,9 @@
-FROM eclipse-temurin:17-jdk
+FROM openjdk:17-jdk-slim
+
 WORKDIR /app
-COPY target/hiring-app-1.0.0.jar hiring-app.jar
-ENTRYPOINT ["java","-jar","hiring-app.jar"]
+
+COPY target/hiring-app-1.0.0-SNAPSHOT.jar app.jar
+
+EXPOSE 8080
+
+ENTRYPOINT ["java","-jar","app.jar"]
