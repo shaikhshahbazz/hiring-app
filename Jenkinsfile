@@ -3,19 +3,10 @@ pipeline {
 
     tools {
         maven 'Maven'
-    }
-
-    environment {
-        SONAR_SERVER = 'SonarServer'
+        jdk 'JDK17'
     }
 
     stages {
-
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/shaikhshahbazz/hiring-app.git'
-            }
-        }
 
         stage('Build') {
             steps {
