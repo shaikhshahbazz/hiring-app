@@ -6,42 +6,40 @@ pipeline {
         jdk 'JDK17'
     }
 
+    environment {
+        IMAGE_NAME = "hiring-app"
+        IMAGE_TAG = "1.0.0"
+    }
+
     stages {
 
-        stage('Build') {
+        stage('Build Jar') {
             steps {
-                sh 'mvn clean package'
+                sh 'mvn clean package -DskipTests'
             }
         }
 
-        stage('Sonar Scan') {
+        stage('Build Docker Image') {
             steps {
-                withSonarQubeEnv('SonarServer') {
-                    sh 'mvn sonar:sonar'
-                }
+                sh '''
+                docker build -t $IMAGE_NAME:$IMAGE_TAG .
+                '''
             }
         }
 
-        stage('Quality Gate') {
+        stage('Verify Image') {
             steps {
-                waitForQualityGate abortPipeline: true
+                sh 'docker images'
             }
         }
+    }
 
-        stage('Upload to Nexus') {
-            steps {
-                withCredentials([usernamePassword(
-                        credentialsId: 'nexus-cred',
-                        usernameVariable: 'NEXUS_USER',
-                        passwordVariable: 'NEXUS_PASS')]) {
-
-                    sh """
-                    mvn deploy \
-                    -DskipTests \
-                    -DaltDeploymentRepository=nexus-snapshots::default::http://$NEXUS_USER:$NEXUS_PASS@54.80.196.176:8081/repository/hiring-app/
-                    """
-                }
-            }
+    post {
+        success {
+            echo "Docker Image Built Successfully!"
+        }
+        failure {
+            echo "Docker Build Failed!"
         }
     }
 }
