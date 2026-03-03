@@ -30,7 +30,17 @@ pipeline {
 
         stage('Upload to Nexus') {
             steps {
-                sh 'mvn deploy'
+                withCredentials([usernamePassword(
+                        credentialsId: 'nexus-cred',
+                        usernameVariable: 'NEXUS_USER',
+                        passwordVariable: 'NEXUS_PASS')]) {
+
+                    sh """
+                    mvn deploy \
+                    -DskipTests \
+                    -DaltDeploymentRepository=nexus-snapshots::default::http://$NEXUS_USER:$NEXUS_PASS@54.80.196.176:8081/repository/hiring-app/
+                    """
+                }
             }
         }
     }
