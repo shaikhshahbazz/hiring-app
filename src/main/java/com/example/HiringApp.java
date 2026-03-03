@@ -1,12 +1,14 @@
 package com.example;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+public class HiringApp {
 
-@SpringBootApplication
-public class HiringAppApplication {
+    public static void main(String[] args) throws Exception {
 
-    public static void main(String[] args) {
-        SpringApplication.run(HiringAppApplication.class, args);
+        System.out.println("Shaikh Shahbazz Hiring App is Running 🚀 ");
+
+        // Keep application running forever
+        while (true) {
+            Thread.sleep(60000);
+        }
     }
 }
