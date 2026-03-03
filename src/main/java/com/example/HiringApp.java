@@ -1,7 +1,12 @@
 package com.example;
 
-public class HiringApp {
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class HiringAppApplication {
+
     public static void main(String[] args) {
-        System.out.println("Hiring App Build Successful!");
+        SpringApplication.run(HiringAppApplication.class, args);
     }
 }
