@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: hiring-app
-          image: shahbazz16/hiring-app:1.0.0
+          image: shahbazz16/hiring-app:1.0.1
           ports:
             - containerPort: 8080
