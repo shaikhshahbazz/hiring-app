@@ -7,7 +7,7 @@
 
     <groupId>com.example</groupId>
     <artifactId>hiring-app</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>hiring-app</name>
@@ -18,10 +18,19 @@
     </properties>
 
     <distributionManagement>
+
+        <!-- Snapshot Repository -->
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <url>http://54.80.196.176:8081/repository/hiring-app/</url>
+        </snapshotRepository>
+
+        <!-- Release Repository -->
         <repository>
             <id>nexus-releases</id>
             <url>http://54.80.196.176:8081/repository/maven-releases/</url>
         </repository>
+
     </distributionManagement>
 
 </project>
