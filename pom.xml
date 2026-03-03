@@ -15,22 +15,19 @@
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <distributionManagement>
-
-        <!-- Snapshot Repository -->
         <snapshotRepository>
             <id>nexus-snapshots</id>
             <url>http://54.80.196.176:8081/repository/hiring-app/</url>
         </snapshotRepository>
 
-        <!-- Release Repository -->
         <repository>
             <id>nexus-releases</id>
             <url>http://54.80.196.176:8081/repository/maven-releases/</url>
         </repository>
-
     </distributionManagement>
 
 </project>
