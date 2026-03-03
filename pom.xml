@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         http://www.mavен.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
@@ -18,6 +18,7 @@
     <packaging>jar</packaging>
 
     <name>hiring-app</name>
+    <description>Hiring Application</description>
 
     <properties>
         <java.version>17</java.version>
@@ -25,11 +26,13 @@
 
     <dependencies>
 
+        <!-- Spring Web -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <!-- Testing -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -40,10 +43,20 @@
 
     <build>
         <plugins>
+
+            <!-- Spring Boot Plugin (IMPORTANT FOR EXECUTABLE JAR) -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
+
         </plugins>
     </build>
 
